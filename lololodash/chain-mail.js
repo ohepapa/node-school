@@ -1,24 +1,14 @@
 var _ = require('lodash')
 
-var worker = function(cities) {
+var worker = function(foo) {
 
-	function chkTemp(n) {
-		return n > 19
-	}
+	var bar = _.chain(foo)
+		.sortBy()
+		.map(function (value) {
+			return _.toUpper(value +=  'chained')
+		})
 
-	var cityWeather = {
-		hot: [],
-		warm: []
-	}
-
-	_.forEach(cities, function(val, key) {
-		if (_.some(val, chkTemp) == true) {
-			if (_.every(val, chkTemp) == true) cityWeather.hot.push(key)
-			else cityWeather.warm.push(key)	
-		}
-	})
-
-	return cityWeather
+	return bar
 }
 
 module.exports = worker
